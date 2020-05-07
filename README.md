@@ -1,2 +1,3 @@
-# extract-textual-insights-from-video
-Extract Textual insights from Video
+**Documentation Work in Progress**
+# Extract Textual insights from Video
+![architecture](doc/source/images/architecture.png)
