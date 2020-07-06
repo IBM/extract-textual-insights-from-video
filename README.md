@@ -145,11 +145,103 @@ $ python app.py
 
 - Visit  <http://localhost:8080> on your browser to run the application.
 
+![sample-output](doc/source/images/sample_output.png)
+
+- We'll begin by uploading a video from which we'll be extracting insights.
+
+- You can make use of any meeting video or classroom video that you have or you can download the video that we have used for the demonstration purpose.
+
+    - <http://videos.bigdatauniversity.com/DV0101EN/Module_0_Welcome.mp4>
+
+- This is a free educational video taken from [cognitiveclasses.ai](https://cognitiveclass.ai/courses/data-visualization-with-python). The video is an introduction to a python course.
+
+- Click on the `Drag and drop files here or click here to upload`, choose the video file you want to extract insights from.
+
+![upload](doc/source/images/uploadvideo.gif)
+
+- You can see the custom language and acoustic models that we built in [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) code pattern from the series.
+
+![sttoptions](doc/source/images/sttoptions.png)
+
+- You can find the advance NLP and Tone Analyzer options that we worked with in the [Use advanced NLP and Tone Analysis to extract meaningful insights](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) code pattern from the series.
+![nluoptions](doc/source/images/nluoptions.png)
+
+- Click on the `Submit` button and wait for the application to process. When you have pressed submit, the application in background will:
+    - Extract audio from the video.
+    - Transcribe the audio to get speaker diarized notes.
+    - Use advanced NLP and Tone Analysis to extract insightful report.
+
+![submit](doc/source/images/submit.gif)
+
+- As soon as the video is uploaded, you can see the video preview on the screen as shown.
+
+![processing](doc/source/images/processing.gif)
+
+- You can track the progress through the progress bar as shown.
+
+- The various progressing stages are:
+    - Uploading
+    - Extracting
+    - Transcribing
+    - NLU Analysing
+
+>NOTE: An approximate time to complete the extraction of insights will be displayed.
+
+![progress](doc/source/images/progressindicator.png)
+
+- Once the video is transcribed you can scroll down to see the speaker diarized textual output under `Speech To Text` tab as shown.
+
+![sttoutput](doc/source/images/sttoutput.png)
+
+- Similarly once the NLU Analysis is completed, you can click on the `NLU Analysis` tab to view the report.
+
+![nluoutput](doc/source/images/nlureport.png)
+
+>- More about the entities:
+>    - `Category` - Categorize your content using a five-level classification hierarchy. View the complete list of categories [here](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-categories-hierarchy).
+>    - `Concept Tags`: Identify high-level concepts that aren't necessarily directly referenced in the text.
+>    - `Entity`: Find people, places, events, and other types of entities mentioned in your content. View the complete list of entity types and subtypes [here](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-entity-type-systems).
+>    - `Keywords`: Search your content for relevant keywords.
+>    - `Sentiments`: Analyze the sentiment toward specific target phrases and the sentiment of the document as a whole.
+>    - `Emotions`: Analyze emotion conveyed by specific target phrases or by the document as a whole.
+>    - `Positive sentences`: The Watson Tone Analyzer service uses linguistic analysis to detect emotional and language tones in written text
+
+>- Learn more features of:
+>   - Watson Natural Language Understanding service. [Learn more](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-about).
+>   - Watson Tone Analyzer service. [Learn more](https://cloud.ibm.com/docs/tone-analyzer?topic=tone-analyzer-gettingStarted).
+
+- Once the NLU Analysis Report is generated you can review it. The Report consists of:
+   
+     - Features extracted by Watson Natural Language Understanding 
+    
+    - Features extracted by Watson Tone Analyzer:
+   
+     - Other features
+
+![report](doc/source/images/report.png)
+
+1. `Category`: Based on the dataset that we used, you can see that the category was extracted as `technology and computing` specifically `Software`. 
+
+>Note : You can see the confidence score of the model in green bubble tags.
+
+2. `Entity`: As you can see entity is `Person` specifically `Alex Ackles` indicating that, in the video recording most of the emphisis is given by a `Person, Ackles`.
+
+3. `Concept Tags`: Top 3 concept tags are extracted from the video, `United Nations`, `Aesthetics` and `Statistics` indicating that the speaker spoke about these contexts more often.
+
+4. `Keywords`, `Sentiments` and `Emotions`: Top keywords along with their sentiments and emotions are extracted, giving a sentiment analysis of the entire meeting.
+
+5. `Top Positive Sentences`: Based on emotional tone  and language tone, positive sentences spoken in the video is extracted and is limited to 5 top positive sentences.
+
+6. `Word Clouds`: Based on the keywords, `Nouns & Adjectives` as well as `Verbs` are analyzed, and the result is then turned into word clouds.
+
+- The Report can be printed by clicking on the `print` button as shown.
+
+![print](doc/source/images/print.png)
 
 
 ### Summary
 
-We have seen how to extract audio from video files and store the result in Cloud Object Storage. In the [next code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) we will learn how to train a custom Speech to Text model to transcribe the text from the extracted audio files.
+We learnt how to extract audio from video files, transcribe the audio with our custom built models, process the transcript to get speaker diarized notes as well as NLU analysis report.
 
 
 <!-- keep this -->

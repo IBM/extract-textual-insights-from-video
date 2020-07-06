@@ -1,11 +1,10 @@
 # Short Title
 
-Build a custom Speech to Text model with diarization capabilites
+Extract insights from videos
 
 # Long Title
 
-Build a custom Speech to Text model and transcribe audio to detect multiple speakers from the audio
-
+Use Speech to Text, advanced NLP and Tone Analysis to extract insights from video files.
 
 # Author
 * [Manoj Jahgirdar](https://www.linkedin.com/in/manoj-jahgirdar-6b5b33142/)
@@ -15,15 +14,15 @@ Build a custom Speech to Text model and transcribe audio to detect multiple spea
 
 ### Github repo
 
-* https://github.com/IBM/build-custom-stt-model-with-diarization
+* https://github.com/IBM/extract-textual-insights-from-video
 
 
 ### Video Link
-* https://www.youtube.com/watch?v=xgkYRJdBQ8E
+* https://www.youtube.com/watch?v=3dsTpI8RWiU
 
 # Summary
 
-In this code pattern, given an audio recording of the virtual meeting or a virtual classroom, we will train a custom Speech To Text model and transcribe the audio to get diarized textual output.
+In this code pattern, given any video, we will learn how to extract speaker diarized notes and meaningful insights report using Speech To Text, advanced NLP and Tone Analysis.
 
 # Technologies
 
@@ -33,37 +32,41 @@ In this code pattern, given an audio recording of the virtual meeting or a virtu
 
 # Description
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
 
-With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms.
 
 # Flow
 
 <!--add an image in this path-->
 ![architecture](doc/source/images/architecture.png)
 
-1. User uploads corpus file to the application
+1. User uploads recorded video file of the virtual meeting or a virtual classroom in the application.
 
-2. The extracted audio from the [previous code pattern of the series](https://github.com/IBM/convert-video-to-audio) is retrived from Cloud Object Storage
+2. FFMPG Library extracts audio from the video file.
 
-3. The corpus file as well as the extracted audio are uploaded to Watson Speech To Text to train the custom model
+3. Watson Speech To Text transcribes the audio to give a diarized textual output.
 
-4. The Downloaded audio file from the [previous code pattern of the series](https://github.com/IBM/convert-video-to-audio) is transcribed with the custom Speech To Text model and the text file is stored in Cloud Object Storage
+4. (Optionally) Watson Language Translator, translates other languages into English transcript.
+
+5. Watson Tone Analyzer analyses the transcript and picks up top positive statements form the transcript.
+
+6. Watson Natural Language Understanding reads the transcript to identify key pointers from the transcript and get the sentiments and emotions.
+
+7. The key pointers and summary of the video is then presented to the user in the application.
+
+8. The user can then download the textual insights.
 
 # Instructions
 
-> Find the detailed steps in the [README](https://github.com/IBM/build-custom-stt-model-with-diarization/blob/master/README.md) file.
+> Find the detailed steps in the [README](https://github.com/IBM/extract-textual-insights-from-video/blob/master/README.md) file.
 
 
 1. Clone the repo
 
-2. Create Watson Speech To Text Service
+2. Add the Credentials to the Application
 
-3. Add the Credentials to the Application
+3. Deploy the Application
 
-4. Deploy the Application
-
-5. Run the Application
+4. Run the Application
 
 # Components and services
 
