@@ -2,11 +2,7 @@
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
-
-With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms.
-
-In this code pattern, Given a video recording of the virtual meeting or a virtual classroom, we extract the audio from the video, transcribe the audio into text,  and extract insights from the text.
+In this code pattern, given any video, we will learn how to extract speaker diarized notes and meaningful insights report using Speech To Text, advanced NLP and Tone Analysis.
 
 When you have completed this code pattern, you will understand how to:
 
