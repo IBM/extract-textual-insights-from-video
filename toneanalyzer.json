@@ -1,8 +1,0 @@
-{
-    "apikey": "jRa-PW-KS_axFkj4M64vPt2UE6wrhcCPwyq_UCWmGoCY",
-    "iam_apikey_description": "Auto-generated for key aa5c6161-e602-48a9-b8a1-369cb4c2d90d",
-    "iam_apikey_name": "Auto-generated service credentials",
-    "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-    "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/9819414ae0e04f6ba28eb6b81711822f::serviceid:ServiceId-df5fb380-8d3a-4863-b508-7154ca03b4f5",
-    "url": "https://api.eu-gb.tone-analyzer.watson.cloud.ibm.com/instances/caab2f7d-4519-4cbc-b0a4-756669e53b65"
-}
