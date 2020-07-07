@@ -145,7 +145,7 @@ natural_language_understanding.set_service_url(NLU_URL)
 
 ''' Methods for IBM Watson Tone Analyser '''
 
-with open('toneanalyser.json', 'r') as credentialsFile:
+with open('toneanalyzer.json', 'r') as credentialsFile:
     credentials2 = json.loads(credentialsFile.read())
 
 TONE_API_KEY_ID = credentials2.get('apikey')

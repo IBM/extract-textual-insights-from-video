@@ -67,13 +67,9 @@ $ git clone https://github.com/IBM/extract-textual-insights-from-video
 
 ### 2. Add the Credentials to the Application
 
-- In the repo parent folder, copy the **credentials.json** file created in [first code pattern of the series](https://github.com/IBM/convert-video-to-audio), paste it and rename it as **cloudobjectstorage.json** file. This will connect the application to the same Cloud Object Storage Bucket which was created in the first code pattern of the series.
+- In the [second code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) cloned repo, you will have updated **speechtotext.json** file with speech to text credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
-- In the repo parent folder, copy the **credentials1.json** file created in [second code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization), paste it and rename it as **speechtotext.json** file. This will connect the application to the same Speech-To-Text service which was created in the second code pattern of the series.
-
-- In the repo parent folder, copy the **credentials1.json** file created in [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights), paste it and rename it as **naturallanguageunderstanding.json** file. This will connect the application to the same Natural Language Understanding service which was created in the third code pattern of the series.
-
-- In the repo parent folder, copy the **credentials2.json** file created in [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights), paste it and rename it as **toneanalyser.json** file. This will connect the application to the same Tone Analyzer service which was created in the third code pattern of the series.
+- In the [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) cloned rep, you will have updated **naturallanguageunderstanding.json** file with natural language understanding credentials and **toneanalyzer.json** file with tone analyzer credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
 ### 4. Run the Application
 
