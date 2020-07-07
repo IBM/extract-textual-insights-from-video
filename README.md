@@ -35,8 +35,7 @@ When you have completed this code pattern, you will understand how to:
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
 
-coming soon
-<!-- [![video](https://img.youtube.com/vi/zbhDULZGJEE/0.jpg)](https://www.youtube.com/watch?v=zbhDULZGJEE) -->
+[![video](https://img.youtube.com/vi/3dsTpI8RWiU/0.jpg)](https://www.youtube.com/watch?v=3dsTpI8RWiU)
 
 # Pre-requisites
 
