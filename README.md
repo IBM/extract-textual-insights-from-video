@@ -1,4 +1,4 @@
-# Use speech-to-text, advanced NLP and tone analyzer to extract textual insights from a given video
+# Use Speech to Text, advanced NLP and Tone Analysis to extract insights from video files.
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
 
