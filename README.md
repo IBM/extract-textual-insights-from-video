@@ -66,7 +66,7 @@ $ git clone https://github.com/IBM/extract-textual-insights-from-video
 
 ### 2. Add the Credentials to the Application
 
-- In the [second code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) cloned repo, you will have updated **speechtotext.json** file with speech to text credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
+- In the [second code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) cloned repo, you will have updated **speechtotext.json** file with speech to text credentials. Copy both the files and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
 - In the [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) cloned rep, you will have updated **naturallanguageunderstanding.json** file with natural language understanding credentials and **toneanalyzer.json** file with tone analyzer credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
@@ -151,6 +151,8 @@ $ python app.py
 ![upload](doc/source/images/uploadvideo.gif)
 
 - You can see the custom language and acoustic models that we built in [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) code pattern from the series.
+
+>Note: We have trained a custom language model and an acoustic model with `IBM Earnings Call Q1 2019` dataset. Hence the model's performance will be best for Computer Science, Finance related Content. The model can be trained according to the content that you wish to extract. Example: Train the model with sports dataset to get best results with sports commentary.
 
 ![sttoptions](doc/source/images/sttoptions.png)
 
