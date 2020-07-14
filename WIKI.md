@@ -4,7 +4,7 @@ Extract insights from videos
 
 # Long Title
 
-Use Speech to Text, advanced NLP and Tone Analysis to extract insights from video files.
+Use speech to text, advanced NLP and tone analysis to extract insights from video files.
 
 # Author
 * [Manoj Jahgirdar](https://www.linkedin.com/in/manoj-jahgirdar-6b5b33142/)
