@@ -1,6 +1,10 @@
-# Use Speech to Text, advanced NLP and Tone Analysis to extract insights from video files.
+# Use speech to text, advanced NLP and tone analysis to extract insights from video files.
 
-This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
+This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson](). Please complete the [Extract audio from video](https://github.com/IBM/convert-video-to-audio), [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) and [Use advanced NLP and tone analysis to extract meaningful insights](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) code patterns of the series before continuing further since all the code patterns are linked.
+
+In a virtually connected world, staying focused towards work or education is very important. Studies suggests that most people tend to lose their focus from live virtual meetings or virtual classroom sessions post 20min, hence most of the meetings and virtual classrooms are recorded so that an individual can go through it later.
+
+What if these recordings could be analyzed with the help of AI and a detailed report of the meeting or classroom could be generated? Towards this goal, in this code pattern, given a video recording of the virtual meeting or a virtual classroom, we will be extracting audio from video file using open source library FFMPEG, transcribing the audio to get speaker diarized notes with custom trained language and acoustic speech to text models, and generating a NLU report that consists of Category, Concepts, Emotion, Entities, Keywords, Sentiment, Top Positive Sentences and Word Clouds using Python Flask runtime.
 
 In this code pattern, given any video, we will learn how to extract speaker diarized notes and meaningful insights report using Speech To Text, advanced NLP and Tone Analysis.
 
