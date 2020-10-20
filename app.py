@@ -53,6 +53,7 @@ TONE_URL = ""
 
 SttModel = None
 NluOptions = None
+liteVersion = False
 
 ''' Methods for IBM Watson Speech-To-Text '''
 
@@ -70,18 +71,23 @@ speech_to_text = SpeechToTextV1(
 )
 speech_to_text.set_service_url(STT_URL)
 
-language_models = speech_to_text.list_language_models().get_result()
-model = language_models["customizations"]
-for i in model:
-    if i["name"] == STT_language_model:
-        language_customization_id = i["customization_id"]
+try:
+    language_models = speech_to_text.list_language_models().get_result()
+    model = language_models["customizations"]
+    for i in model:
+        if i["name"] == STT_language_model:
+            language_customization_id = i["customization_id"]
+except:
+    liteVersion = True
 
-acoustic_models = speech_to_text.list_acoustic_models().get_result()
-model = acoustic_models["customizations"]
-for i in model:
-    if i["name"] == STT_acoustic_model:
-        acoustic_customization_id = i["customization_id"]
-
+try:
+    acoustic_models = speech_to_text.list_acoustic_models().get_result()
+    model = acoustic_models["customizations"]
+    for i in model:
+        if i["name"] == STT_acoustic_model:
+            acoustic_customization_id = i["customization_id"]
+except:
+    liteVersion = True
 
 @app.route('/initSTT')
 def initSTT():
@@ -89,35 +95,38 @@ def initSTT():
     flag1 = False
     flag2 = False
     try:
-        language_models = speech_to_text.list_language_models().get_result()
-        acoustic_models = speech_to_text.list_acoustic_models().get_result()
-
-        language_model = language_models["customizations"]
-        acoustic_model = acoustic_models["customizations"]
-
-        for name in language_model:
-            if name["name"] == STT_language_model:
-                flag1 = True
-                break
-
-        for name in acoustic_model:
-            if name["name"] == STT_acoustic_model:
-                flag2 = True
-                break
-
-        if not flag1:
-            respo = {"message": "Language Model \"" +
-                     STT_language_model + "\" Does not exist!"}
+        if liteVersion:
+            respo = {"message": "Using Lite Version of STT"}
         else:
-            respo = {"message": "Language Model \"" +
-                     STT_language_model + "\" found!"}
+            language_models = speech_to_text.list_language_models().get_result()
+            acoustic_models = speech_to_text.list_acoustic_models().get_result()
 
-        if not flag2:
-            respo = {"message": "Acoustic Model \"" +
-                     STT_language_model + "\" Does not exist!"}
-        else:
-            respo = {"message": "Acoustic Model \"" +
-                     STT_acoustic_model + "\" found!"}
+            language_model = language_models["customizations"]
+            acoustic_model = acoustic_models["customizations"]
+
+            for name in language_model:
+                if name["name"] == STT_language_model:
+                    flag1 = True
+                    break
+
+            for name in acoustic_model:
+                if name["name"] == STT_acoustic_model:
+                    flag2 = True
+                    break
+
+            if not flag1:
+                respo = {"message": "Language Model \"" +
+                        STT_language_model + "\" Does not exist!"}
+            else:
+                respo = {"message": "Language Model \"" +
+                        STT_language_model + "\" found!"}
+
+            if not flag2:
+                respo = {"message": "Acoustic Model \"" +
+                        STT_language_model + "\" Does not exist!"}
+            else:
+                respo = {"message": "Acoustic Model \"" +
+                        STT_acoustic_model + "\" found!"}
 
     except ClientError as be:
         respo = {"message": "CLIENT ERROR: {0}\n".format(be)}
@@ -259,19 +268,32 @@ def transcribeAudio():
         print("Processing ...\n")
         with open(app.config["AUDIO_UPLOAD"]+filename_converted, 'rb') as audio_file:
             print(app.config["AUDIO_UPLOAD"]+filename_converted)
-            speech_recognition_results = speech_to_text.recognize(
-                audio=audio_file,
-                content_type='audio/flac',
-                recognize_callback=myRecognizeCallback,
-                model='en-US_BroadbandModel',
-                keywords=['redhat', 'data and AI', 'Linux', 'Kubernetes'],
-                keywords_threshold=0.5,
-                customization_id=modelInfo["langModel"],
-                acoustic_customization_id=modelInfo["acoModel"],
-                timestamps=True,
-                speaker_labels=True,
-                word_alternatives_threshold=0.9
-            ).get_result()
+            if liteVersion:
+                speech_recognition_results = speech_to_text.recognize(
+                    audio=audio_file,
+                    content_type='audio/flac',
+                    recognize_callback=myRecognizeCallback,
+                    model='en-US_BroadbandModel',
+                    keywords=['redhat', 'data and AI', 'Linux', 'Kubernetes'],
+                    keywords_threshold=0.5,
+                    timestamps=True,
+                    speaker_labels=True,
+                    word_alternatives_threshold=0.9
+                ).get_result()
+            else:
+                speech_recognition_results = speech_to_text.recognize(
+                    audio=audio_file,
+                    content_type='audio/flac',
+                    recognize_callback=myRecognizeCallback,
+                    model='en-US_BroadbandModel',
+                    keywords=['redhat', 'data and AI', 'Linux', 'Kubernetes'],
+                    keywords_threshold=0.5,
+                    customization_id=modelInfo["langModel"],
+                    acoustic_customization_id=modelInfo["acoModel"],
+                    timestamps=True,
+                    speaker_labels=True,
+                    word_alternatives_threshold=0.9
+                ).get_result()
 
             global transcript
             transcript = ''
@@ -569,13 +591,19 @@ def analyseText():
 
 @app.route('/listAcousticModels')
 def listAcousticModels():
-    acoustic_models = speech_to_text.list_acoustic_models().get_result()
+    try:
+        acoustic_models = speech_to_text.list_acoustic_models().get_result()
+    except:
+        acoustic_models = {"customizations":[{"name": "Lite version", "customization_id": "lite"}]}
     return json.dumps(acoustic_models, indent=2)
 
 
 @app.route('/listLanguageModels')
 def listLanguageModels():
-    language_models = speech_to_text.list_language_models().get_result()
+    try:
+        language_models = speech_to_text.list_language_models().get_result()
+    except:
+        language_models = {"customizations":[{"name": "Lite version", "customization_id": "lite"}]}
     return json.dumps(language_models, indent=2)
 
 @app.route('/')

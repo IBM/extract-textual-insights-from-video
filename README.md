@@ -69,12 +69,62 @@ $ git clone https://github.com/IBM/extract-textual-insights-from-video
 ```
 
 ### 2. Add the Credentials to the Application
+You will have to add Watson Speech-To-Text, Tone Analyzer and Natural Language Understanding Credentials to the Application.
+
+If you have completed the first three code patterns of the series, then you can add the same credentials created in [second code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) and [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) by following the steps below.
+
+<details><summary><b>Add existing credentials created from the series</b></summary>
 
 - In the [second code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) cloned repo, you will have updated **speechtotext.json** file with speech to text credentials. Copy both the files and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
 - In the [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) cloned rep, you will have updated **naturallanguageunderstanding.json** file with natural language understanding credentials and **toneanalyzer.json** file with tone analyzer credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
-### 4. Run the Application
+
+</details>
+
+
+Or if you have landed on this code pattern directly without completing the previous code patterns of the series, you can add new credentials by following the steps below.
+
+<details><summary><b>Add new credentials</b></summary>
+
+* On IBM Cloud, create a [Watson Speech To Text Service](https://cloud.ibm.com/catalog/services/speech-to-text), and click on `create` as shown.
+
+![Speech-to-text-service](doc/source/images/stt-service.png)
+
+* In Speech To Text Dashboard, Click on `Services Credentials`
+
+![](doc/source/images/service-credentials.png)
+
+- Click on `New credential` and add a service credential as shown. Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
+
+![](doc/source/images/create-stt-credentials.gif)
+
+- - Back to IBM Cloud, create a [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding) service, under `Select a pricing` plan select `Lite` and click on `create` as shown.
+
+![nlu-service](doc/source/images/nlu-service.png)
+
+- In Natural Language Understanding dashboard, click on **Services Credentials**
+
+- Click on **New credential** and add a service credential as shown. Once the credential is created, you can copy the credentials using the small two overlapping squares and save the credentials in a text file for using it in later steps in this code pattern.
+
+![](doc/source/images/create-nlu-credentials.gif)
+
+- Back to IBM Cloud, create a [Tone Analyzer](https://cloud.ibm.com/catalog/services/tone-analyzer) service, under `Select a pricing` plan select `Lite` and click on `create` as shown.
+
+![tone-service](doc/source/images/tone-service.png)
+
+- In Tone Analyzer dashboard, click on **Services Credentials**
+
+- Click on **New credential** and add a service credential as shown. Once the credential is created, you can copy the credentials using the small two overlapping squares and save the credentials in a text file for using it in later steps in this code pattern.
+
+
+![](doc/source/images/create-tone-credentials.gif)
+
+
+</details>
+
+
+### 3. Run the Application
 
 <details><summary><b>With Docker Installed</b></summary>
 
@@ -136,7 +186,7 @@ $ python app.py
 
 </details>
 
-### 5. Run the Application
+### 4. Run the Application
 
 - Visit  <http://localhost:8080> on your browser to run the application.
 
@@ -154,14 +204,15 @@ $ python app.py
 
 ![upload](doc/source/images/uploadvideo.gif)
 
-- You can see the custom language and acoustic models that we built in [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) code pattern from the series.
+- You can see the custom language and acoustic models that we built in [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) code pattern from the series. If you have landed directly on this code pattern and created credentials then you will see "Lite version".
 
 >Note: We have trained a custom language model and an acoustic model with `IBM Earnings Call Q1 2019` dataset. Hence the model's performance will be best for Computer Science, Finance related Content. The model can be trained according to the content that you wish to extract. Example: Train the model with sports dataset to get best results with sports commentary.
 
 ![sttoptions](doc/source/images/sttoptions.png)
 
-- You can find the advance NLP and Tone Analyzer options that we worked with in the [Use advanced NLP and Tone Analysis to extract meaningful insights](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) code pattern from the series.
+- You can find the advance NLP and Tone Analyzer options that we worked with in the [Use advanced NLP and Tone Analysis to extract meaningful insights](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) code pattern from the series. If you have landed directly on this code pattern and created credentials then you will see "Lite version".
 ![nluoptions](doc/source/images/nluoptions.png)
+
 
 - Click on the `Submit` button and wait for the application to process. When you have pressed submit, the application in background will:
     - Extract audio from the video.
