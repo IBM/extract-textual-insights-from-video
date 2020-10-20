@@ -124,7 +124,7 @@ Or if you have landed on this code pattern directly without completing the previ
 </details>
 
 
-### 3. Run the Application
+### 3. Deploy the Application
 
 <details><summary><b>With Docker Installed</b></summary>
 
