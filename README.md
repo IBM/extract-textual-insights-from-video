@@ -95,19 +95,21 @@ Or if you have landed on this code pattern directly without completing the previ
 
 ![](doc/source/images/service-credentials.png)
 
-- Click on `New credential` and add a service credential as shown. Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
+- Click on `New credential` and add a service credential as shown. 
 
 ![](doc/source/images/create-stt-credentials.gif)
 
-- - Back to IBM Cloud, create a [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding) service, under `Select a pricing` plan select `Lite` and click on `create` as shown.
+- Once the credential is created, you can copy the credentials using the small two overlapping squares and paste the credentials into **speechtotext.json** file present in the cloned repo.
+
+- Back to IBM Cloud, create a [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding) service, under `Select a pricing` plan select `Lite` and click on `create` as shown.
 
 ![nlu-service](doc/source/images/nlu-service.png)
 
-- In Natural Language Understanding dashboard, click on **Services Credentials**
-
-- Click on **New credential** and add a service credential as shown. Once the credential is created, you can copy the credentials using the small two overlapping squares and save the credentials in a text file for using it in later steps in this code pattern.
+- Click on **New credential** and add a service credential as shown.
 
 ![](doc/source/images/create-nlu-credentials.gif)
+
+- Once the credential is created, you can copy the credentials using the small two overlapping squares and paste the credentials into **naturallanguageunderstanding.json** file present in the cloned repo.
 
 - Back to IBM Cloud, create a [Tone Analyzer](https://cloud.ibm.com/catalog/services/tone-analyzer) service, under `Select a pricing` plan select `Lite` and click on `create` as shown.
 
@@ -115,10 +117,11 @@ Or if you have landed on this code pattern directly without completing the previ
 
 - In Tone Analyzer dashboard, click on **Services Credentials**
 
-- Click on **New credential** and add a service credential as shown. Once the credential is created, you can copy the credentials using the small two overlapping squares and save the credentials in a text file for using it in later steps in this code pattern.
-
+- Click on **New credential** and add a service credential as shown.
 
 ![](doc/source/images/create-tone-credentials.gif)
+
+- Once the credential is created, you can copy the credentials using the small two overlapping squares and paste the credentials into **toneanalyzer.json** file present in the cloned repo.
 
 
 </details>
