@@ -74,7 +74,7 @@ $ git clone https://github.com/IBM/extract-textual-insights-from-video
 
 - In the [third code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) cloned rep, you will have updated **naturallanguageunderstanding.json** file with natural language understanding credentials and **toneanalyzer.json** file with tone analyzer credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
-### 4. Run the Application
+### 3. Deploy the Application
 
 <details><summary><b>With Docker Installed</b></summary>
 
@@ -136,7 +136,7 @@ $ python app.py
 
 </details>
 
-### 5. Run the Application
+### 4. Run the Application
 
 - Visit  <http://localhost:8080> on your browser to run the application.
 
