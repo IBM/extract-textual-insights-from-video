@@ -196,46 +196,35 @@ def upload_file():
             file.save(os.path.join(app.config['VIDEO_UPLOAD'], filename_converted))
             print("FILE SAVED!")
         
+        options = request.form
+        
+        global NluOptions
+        
         '''Get the Nlu Options from Client'''
 
-        global NluOptions
-        nluopt = request.form
-        NluOptions = json.loads(nluopt['NluOptions'])
-        print(NluOptions)
-        '''Get the Stt Options from Client'''
-
+        NluOptions = {
+            "file": filename_converted,
+            "category": options['category'],
+            "concepts": options['concepts'],
+            "entity": options['entity'],
+            "sentiments": 'True',
+            "positiveSentences": 'True'
+        }
         global SttModel
-        sttopt = request.form
-        SttModel = json.loads(sttopt['SttModel'])
-        print(SttModel)
+        
+        SttModel = {
+            "file": filename_converted,
+            "langModel": options['langModel'],
+            "acoModel": options['accModel']
+        }
 
-        return json.dumps({"flag": 1})
+        return redirect(url_for('result', filename=filename_converted))
     return json.dumps({"flag": 1})
 
-def uploader():
-    try:
-        if request.method == 'POST':
+@app.route('/result/<filename>', methods=['GET'])
+def result(filename):
 
-            '''Get the Video from Client'''
-
-            f = request.files["video"]
-
-            filename_converted = f.filename.replace(
-                " ", "-").replace("'", "").lower()
-            # cmd = 'rm -r static/raw/*'
-            # os.system(cmd)
-            f.save(os.path.join(
-                app.config["VIDEO_UPLOAD"], secure_filename(filename_converted)))
-
-        # print(json.dumps(SttModel, indent=2))
-        # print(json.dumps(NluOptions, indent=2))
-        myResponse = {"flag": 1}
-
-    except Exception as e:
-        print("Unable {0}".format(e))
-        myResponse = {"flag": 0, "Exception": "{0}".format(e)}
-
-    return json.dumps(myResponse, indent=2)
+    return render_template('result.html', filename=filename)
 
 @app.route('/videoToAudio')
 def videoToAudio():

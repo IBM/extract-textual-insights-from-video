@@ -33,7 +33,8 @@
     <br>
     <div class="bx--grid">
         <div class="bx--row">
-            <div class="bx--col-md-2">
+            <div class="bx--col-lg-3"></div>
+            <div class="bx--col-lg-6">
                 <div class="outside">
                     <div class="inside">
                         <h2>Extract Textual Insights from Video</h2>
@@ -70,7 +71,7 @@
                                     <div class="bx--form-item" id="gotLangModel">
                                         <div class="bx--select">
                                             <div class="bx--select-input__wrapper">
-                                                <select id="select-id1" class="bx--select-input">
+                                                <select id="select-id1" name="langModel" class="bx--select-input">
                             
                                                 </select>
                                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
@@ -103,7 +104,7 @@
                                     <div class="bx--form-item" id="gotAcoModel">
                                         <div class="bx--select">
                                             <div class="bx--select-input__wrapper">
-                                                <select id="select-id2" class="bx--select-input">
+                                                <select id="select-id2" name="accModel" class="bx--select-input">
                             
                             
                                                 </select>
@@ -172,7 +173,7 @@
                             
                                     <div class="bx--btn-set">
                                         <div>
-                                            <button class="bx--btn bx--btn--primary" id="Upload" name="Upload" value="Upload" type="button">Submit
+                                            <button class="bx--btn bx--btn--primary" id="Upload" name="Upload" value="Upload" type="submit">Submit
                                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet"
                                                     style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
                                                     class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32"
@@ -248,195 +249,11 @@
                             
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="bx--col-md-6">
-                <div class="outside">
-                    <div class="inside">
-                        <video id="videoHere" width="100%" controls>
-
-                        </video>
-                        <br>
-                        <br>
-                        <div id="progressIndicator">
-                            <div class="w3-light-grey w3-round-xlarge">
-                                <div id="myBar" class="w3-container w3-blue w3-round-xlarge" style="height:24px;width:0%">
-                                </div>
-                            </div>
-
-                            <p id="myP">Message </p>
-                        </div>
-                        <br>
-
-                        <div data-tabs class="bx--tabs" id="tabsHere">
-                            <div class="bx--tabs-trigger" tabindex="0">
-                                <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
-                                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-                                    <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
-                                </svg>
-                            </div>
-                            <ul class="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
-                                <li class="bx--tabs__nav-item bx--tabs__nav-item--selected " data-target=".tab-1-default" role="tab" aria-selected="true">
-                                    <a tabindex="0" id="tab-link-1-default" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-1-default">Speech
-                                        To Text</a>
-                                </li>
-                                <li class="bx--tabs__nav-item " data-target=".tab-2-default" role="tab">
-                                    <a tabindex="0" id="tab-link-2-default" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-2-default">NLU
-                                        Analysis</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="bx--tab-content">
-                            <div id="tab-panel-1-default" class="tab-1-default" role="tabpanel" aria-labelledby="tab-link-1-default" aria-hidden="false">
-                                <div id="scrollClass" class="scrollClass">
-                                    <div class="bx--row" id="Loading1">
-                                        <div class="bx--col-lg-12">
-                                            <div class="outside">
-                                                <div class="inside">
-                                                    <div class="bx--form-item">
-                                                        <label class="bx--label bx--skeleton"></label>
-                                                        <div class="bx--select bx--skeleton">
-                                                            <select class="bx--select-input"></select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="bx--col-lg-12">
-                                            <div class="outside">
-                                                <div class="inside">
-                                                    <div class="bx--form-item">
-                                                        <label class="bx--label bx--skeleton"></label>
-                                                        <div class="bx--select bx--skeleton">
-                                                            <select class="bx--select-input"></select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div id="tab-panel-2-default" class="tab-2-default" role="tabpanel" aria-labelledby="tab-link-2-default" aria-hidden="true" hidden>
-                                <div id="scrollClass">
-                                    <div class="bx--row" id="Loading2">
-                                        <div class="bx--col-lg-12">
-                                            <div class="outside">
-                                                <div class="inside">
-                                                    <div class="bx--form-item">
-                                                        <label class="bx--label bx--skeleton"></label>
-                                                        <div class="bx--select bx--skeleton">
-                                                            <select class="bx--select-input"></select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="bx--col-lg-12">
-                                            <div class="outside">
-                                                <div class="inside">
-                                                    <div class="bx--form-item">
-                                                        <label class="bx--label bx--skeleton"></label>
-                                                        <div class="bx--select bx--skeleton">
-                                                            <select class="bx--select-input"></select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bx--tile" id="NLUAnalysed">
-                                        <h4 align="center"><strong>NLU Analysis Report</strong>
-                                            
-                                            <h4 align="right" id="editor2">
-                                                <button class="bx--btn bx--btn--tertiary bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center " onclick="downloadNLU()">
-                                                    <span class="bx--assistive-text">Download</span>
-                                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet"
-                                                        style="will-change: transform;"
-                                                        xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon"
-                                                        width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
-                                                        <path
-                                                            d="M28,9H25V3H7V9H4a2,2,0,0,0-2,2V21a2,2,0,0,0,2,2H7v6H25V23h3a2,2,0,0,0,2-2V11A2,2,0,0,0,28,9ZM9,5H23V9H9ZM23,27H9V17H23Zm5-6H25V15H7v6H4V11H28Z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-                                            </h4>
-                                        </h4>
-                                        <hr>
-                                        <div class="bx--row" id="optionals">
-                                            <div class="bx--col-sm-2" id="optional1">
-                                                <div class="outside">
-                                                    <div class="inside">
-                                                        Category : <strong id="categoryHere"></strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bx--col-sm-2" id="optional2">
-                                                <div class="outside">
-                                                    <div class="inside">
-                                                        Entity : <strong id="entityHere"></strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bx--col-sm-2" id="optional3">
-                                                <div class="outside">
-                                                    <div class="inside">
-                                                        Concept Tags : <strong id="conceptHere"></strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr id="removeThis">
-                                        <div class="bx--row">
-                                            <div class="bx--col-md-8">
-                                                <div class="outside">
-                                                    <div class="inside">
-                                                        Keywords, Sentiments and Emotions : <strong id="sentimentsHere"></strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="bx--row">
-                                            <div class="bx--col-md-8">
-                                                <div class="outside">
-                                                    <div class="inside">
-                                                        Top 5 Positive Sentences : <strong id="positiveSentencesHere"></strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="bx--row">
-                                            <div class="bx--col-md-8">
-                                                <div class="outside">
-                                                    <div class="inside">
-                                                        Word Clouds :
-                                                        <br>
-                                                        <br>
-                                                        <div class="bx--row" id="wordCloudHere"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <div class="bx--col-lg-3"></div>
         </div>
     </div>
 
