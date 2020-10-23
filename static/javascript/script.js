@@ -215,7 +215,9 @@ submitButton.onclick = () => {
 
                     Convert(file);
                 } else if (data.flag == 0) {
-                    //Handle data.Exception
+                    uploading2.style.display = "none";
+                    progressIndicator.style.display = "none";
+                    error2.style.display = "block";
                 }
             },
             error: () => {

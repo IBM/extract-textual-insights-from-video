@@ -43,7 +43,11 @@
                         <div class="bx--form-item">
                             <p class="bx--label-description">Max. 500 MB file size, and Max. 40min video length.</p>
 
-                            <form enctype="multipart/form-data">
+                            <!-- <form action="/uploader" method="post" enctype="multipart/form-data">
+                                <input type="file" name="video">
+                                <input type="submit" value="Upload">
+                              </form> -->
+                              <form action="/uploader" method="post" enctype="multipart/form-data">
                                 <div class="bx--file" data-file data-file-demo-state-manager>
                                     <label for="file-uploader" class="bx--file-browse-btn" role="button" tabindex="0">
                                         <div data-file-drop-container class="bx--file__drop-container"> Drag and
@@ -56,18 +60,18 @@
                                         </div>
                                     </label>
                                     <div data-file-container id="myFiles" name="myFiles" class="bx--file-container">
-
+                            
                                     </div>
                                     <br>
                                     <h4>Select Language and Accoustic Speech To Text Models
                                     </h4>
-
+                            
                                     <br>
                                     <div class="bx--form-item" id="gotLangModel">
                                         <div class="bx--select">
                                             <div class="bx--select-input__wrapper">
                                                 <select id="select-id1" class="bx--select-input">
-
+                            
                                                 </select>
                                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
                                                     <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
@@ -100,8 +104,8 @@
                                         <div class="bx--select">
                                             <div class="bx--select-input__wrapper">
                                                 <select id="select-id2" class="bx--select-input">
-
-
+                            
+                            
                                                 </select>
                                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
                                                     <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
@@ -132,7 +136,7 @@
                                     <br>
                                     <h4>Select options for Natural Language Understanding
                                     </h4>
-
+                            
                                     <br>
                                     <fieldset class="bx--fieldset">
                                         <legend class="bx--label">Extract the following from the text: </legend>
@@ -163,9 +167,9 @@
                                             <label for="topfive" class="bx--checkbox-label">Top 5
                                                 Positive Sentences</label>
                                         </div>
-
+                            
                                     </fieldset>
-
+                            
                                     <div class="bx--btn-set">
                                         <div>
                                             <button class="bx--btn bx--btn--primary" id="Upload" name="Upload" value="Upload" type="button">Submit
@@ -217,9 +221,9 @@
                                             </div>
                                         </div>
                                     </div>
-
+                            
                                     <br>
-
+                            
                                     <div id="error2">
                                         <div class="bx--file__selected-file bx--file__selected-file--invalid" data-invalid>
                                             <p class="bx--file-filename">Error processing file</p>
@@ -241,7 +245,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                            
                                 </div>
                             </form>
 

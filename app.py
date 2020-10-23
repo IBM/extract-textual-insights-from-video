@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, flash, request, redirect, url_for, render_template, jsonify
+from werkzeug.utils import secure_filename
 import os
 import json
 import pipes
-from werkzeug.utils import secure_filename
 import requests
 import math
 import matplotlib.pyplot as plt
@@ -27,6 +27,7 @@ from moviepy.editor import VideoFileClip
 
 app = Flask(__name__)
 
+ALLOWED_EXTENSIONS = {'mp4','mov'}
 app.config["VIDEO_UPLOAD"] = "static/raw/"
 app.config["AUDIO_UPLOAD"] = "static/audios/"
 app.config["TRANSCRIPT_UPLOAD"] = "static/transcripts/"
@@ -171,8 +172,46 @@ tone_analyzer.set_service_url(TONE_URL)
 
 ''' Method to handle POST upload '''
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/uploader', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        print(request.form)
+        # check if the post request has the file part
+        if 'video' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['video']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename_converted = secure_filename(file.filename.replace(
+                " ", "-").replace("'", "").lower())
+            file.save(os.path.join(app.config['VIDEO_UPLOAD'], filename_converted))
+            print("FILE SAVED!")
+        
+        '''Get the Nlu Options from Client'''
+
+        global NluOptions
+        nluopt = request.form
+        NluOptions = json.loads(nluopt['NluOptions'])
+        print(NluOptions)
+        '''Get the Stt Options from Client'''
+
+        global SttModel
+        sttopt = request.form
+        SttModel = json.loads(sttopt['SttModel'])
+        print(SttModel)
+
+        return json.dumps({"flag": 1})
+    return json.dumps({"flag": 1})
+
 def uploader():
     try:
         if request.method == 'POST':
@@ -180,18 +219,6 @@ def uploader():
             '''Get the Video from Client'''
 
             f = request.files["video"]
-
-            '''Get the Nlu Options from Client'''
-
-            global NluOptions
-            nluopt = request.form
-            NluOptions = json.loads(nluopt['NluOptions'])
-
-            '''Get the Stt Options from Client'''
-
-            global SttModel
-            sttopt = request.form
-            SttModel = json.loads(sttopt['SttModel'])
 
             filename_converted = f.filename.replace(
                 " ", "-").replace("'", "").lower()
