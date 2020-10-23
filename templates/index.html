@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" href="static/css/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +41,7 @@
                         <br>
                         <h4>Upload video file</h4>
                         <div class="bx--form-item">
-                            <p class="bx--label-description">Max. 500 MB file size.</p>
+                            <p class="bx--label-description">Max. 500 MB file size, and Max. 40min video length.</p>
 
                             <form enctype="multipart/form-data">
                                 <div class="bx--file" data-file data-file-demo-state-manager>
@@ -350,9 +351,10 @@
                                     </div>
                                     <div class="bx--tile" id="NLUAnalysed">
                                         <h4 align="center"><strong>NLU Analysis Report</strong>
-                                            <h4 align="right">
-                                                <button class="bx--btn bx--btn--tertiary bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center " onclick="printDiv()">
-                                                    <span class="bx--assistive-text">Print</span>
+                                            
+                                            <h4 align="right" id="editor2">
+                                                <button class="bx--btn bx--btn--tertiary bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center " onclick="downloadNLU()">
+                                                    <span class="bx--assistive-text">Download</span>
                                                     <svg focusable="false" preserveAspectRatio="xMidYMid meet"
                                                         style="will-change: transform;"
                                                         xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon"
@@ -435,6 +437,7 @@
     </div>
 
 </body>
+
 <script src="static/carbon-components/scripts/carbon-components.min.js"></script>
 <script src="static/javascript/script.js"></script>
 

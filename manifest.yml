@@ -1,5 +1,5 @@
 ---
 applications:
- - name: extract-insights-from-video
+ - name: extract-insights-from-video-v3
    random-route: true
    memory: 256M

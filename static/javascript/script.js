@@ -29,8 +29,9 @@ const progressMsg = document.getElementById("myP");
 const progressIndicator = document.getElementById("progressIndicator");
 const tabsHere = document.getElementById("tabsHere");
 const videoHere = document.getElementById("videoHere");
+const submitButton = document.getElementById("Upload");
 
-
+var fileN;
 
 const elem = document.getElementById('myBar');
 var width = 1;
@@ -39,7 +40,7 @@ var startTimes = [];
 var endTimes = [];
 var speakersList = [];
 
-$(document).ready(function() {
+$(document).ready(() => {
 
     uploaded2.style.display = "none";
     error2.style.display = "none";
@@ -53,17 +54,17 @@ $(document).ready(function() {
     progressIndicator.style.display = "none";
     tabsHere.style.display = "none";
     // Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
-    videoHere.ontimeupdate = function() { myFunction() };
+    videoHere.ontimeupdate = () => { myFunction() };
 
     getLanguageModels();
     getAcousticModels();
 });
 
-function isEmpty(el) {
+const isEmpty = (el) => {
     return !$.trim(el.html())
-}
+};
 
-function myFunction() {
+const myFunction = () => {
     // Display the current position of the video in a p element with id="demo"
     num = videoHere.currentTime;
     videoTime = num.toFixed(2);
@@ -72,16 +73,16 @@ function myFunction() {
             console.log(speakersList[i]);
 
     }
-}
+};
 
-Array.prototype.contains = function(v) {
+Array.prototype.contains = (v) => {
     for (var i = 0; i < this.length; i++) {
         if (this[i] === v) return true;
     }
     return false;
 };
 
-Array.prototype.unique = function() {
+Array.prototype.unique = () => {
     var arr = [];
     for (var i = 0; i < this.length; i++) {
         if (!arr.contains(this[i])) {
@@ -91,8 +92,8 @@ Array.prototype.unique = function() {
     return arr;
 }
 
-async function getLanguageModels() {
-    await fetch('/listLanguageModels').then(async(response) => {
+const getLanguageModels = async () => {
+    await fetch('/listLanguageModels').then(async (response) => {
         data = await response.json();
 
         var dynamicSelect = document.getElementById("select-id1");
@@ -112,10 +113,10 @@ async function getLanguageModels() {
         gotLangModel.style.display = "block";
 
     });
-}
+};
 
-async function getAcousticModels() {
-    await fetch('/listAcousticModels').then(async(response) => {
+const getAcousticModels = async () => {
+    await fetch('/listAcousticModels').then(async (response) => {
         data = await response.json();
 
         var dynamicSelect = document.getElementById("select-id2");
@@ -135,12 +136,13 @@ async function getAcousticModels() {
         gotAcoModel.style.display = "block";
 
     });
-}
+};
 
-$('#Upload').on('click', function() {
+submitButton.onclick = () => {
     uploaded2.style.display = "none";
     uploading2.style.display = "block";
     progressIndicator.style.display = "block";
+
     if (isEmpty($('#myFiles'))) {
         uploading2.style.display = "none";
         error2.style.display = "block";
@@ -194,6 +196,7 @@ $('#Upload').on('click', function() {
         formData.append("NluOptions", JSON.stringify(NluOptions));
 
         error2.style.display = "none";
+
         $.ajax({
             url: '/uploader',
             type: 'POST',
@@ -202,7 +205,7 @@ $('#Upload').on('click', function() {
             cache: false,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: (response) => {
                 data = response;
                 if (data.flag == 1) {
                     progressMsg.className = "w3-text-green w3-animate-opacity";
@@ -215,51 +218,51 @@ $('#Upload').on('click', function() {
                     //Handle data.Exception
                 }
             },
-            error: function() {
+            error: () => {
                 error2.style.display = "block";
             }
         });
     }
 
-});
+};
 
-async function Convert(file) {
+const Convert = async (file) => {
     progressMsg.className = "w3-animate-opacity";
     progressMsg.innerHTML = "Converting " + file + " ...";
-    await fetch(`/videoToAudio?fileName=${file}`).then(async(response) => {
+    await fetch(`/videoToAudio?fileName=${file}`).then(async (response) => {
         data = await response.json();
         if (data.flag == 1) {
             progressMsg.className = "w3-text-green w3-animate-opacity";
             progressMsg.innerHTML = "Successfully Converted.";
             width = 50;
             elem.style.width = width + '%';
+            SpeechToText(file.split('.')[0] + '.mp3');
             videoPlayer = `<source src="static/raw/${file.split('.')[0].replace(
-                / /g, "-").replace(/'/g, "").toLowerCase()}.mp4" type="video/mp4">
+                / /g, "-").replace(/'/g, "").toLowerCase()}.${file.split('.')[1]}" type="video/${file.split('.')[1]}">
         Your browser does not support HTML video.`;
             videoHere.innerHTML = videoPlayer;
             videoHere.style.display = "block";
-            SpeechToText(file.split('.')[0] + '.flac');
         } else if (data.flag == 0) {
             //Handle data.Exception
         }
     });
-}
+};
 
-async function SpeechToText(file) {
+const SpeechToText = async (file) => {
     progressMsg.className = "w3-animate-opacity";
     progressMsg.innerHTML = "Transcribing " + file + " ...";
 
-    setTimeout(function() {
+    setTimeout(() => {
         progressMsg.className = "w3-text-green w3-animate-opacity";
-        progressMsg.innerHTML = "Approximately " + videoHere.duration.toFixed(1) / 60 + " Min left...";
+        progressMsg.innerHTML = "Approximately " + Math.ceil(videoHere.duration.toFixed(1) / 60) + " Min left...";
     }, 2000);
 
-    setTimeout(function() {
+    setTimeout(() => {
         progressMsg.className = "w3-animate-opacity";
         progressMsg.innerHTML = "Transcribing " + file + " ...";
-    }, 5000);
+    }, 8000);
 
-    await fetch(`/transcribeAudio`).then(async(response) => {
+    await fetch(`/transcribeAudio`).then(async (response) => {
         data = await response.json();
         arr = [];
         Loading1.style.display = "none";
@@ -271,30 +274,27 @@ async function SpeechToText(file) {
 
         scrollClass.innerHTML = '';
 
-        // scrollClass.innerHTML = '<div class="bx--tile">\
-        //                                 <button class="bx--btn bx--btn--primary bx--btn--field" type="button" onclick="saveTextToCOS()">\
-        //                                 Save Text to Cloud Object Storage\
-        //                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">\
-        //                                 <path d = "M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z" ></path></svg>\
-        //                                 </button>\
-        //                                 <button class="bx--btn bx--btn--primary bx--btn--field" type="button">\
-        //                                 Download Text\
-        //                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">\
-        //                                 <path d="M7.5 11l4.1-4.4.7.7L7 13 1.6 7.3l.7-.7L6.5 11V0h1v11zM13 15v-2h1v2c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1v-2h1v2h12z"></path></svg>\
-        //                                 </button>\
-        //                                 <button class="bx--btn bx--btn--primary bx--btn--field" type="button">\
-        //                                 Download Text with Speaker Details\
-        //                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">\
-        //                                 <path d="M7.5 11l4.1-4.4.7.7L7 13 1.6 7.3l.7-.7L6.5 11V0h1v11zM13 15v-2h1v2c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1v-2h1v2h12z"></path></svg>\
-        //                                 </button>\
-        //                                 </div>\
-        //                                 <br>';
+        scrollClass.innerHTML = `<div class="bx--tile" id='editor'>\
+                                        <a class="bx--btn bx--btn--primary bx--btn--field" target="_blank" href="static/transcripts/${file.split('.')[0] + '.txt'}" type="button">\
+                                        Download as Text\
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">\
+                                        <path d="M7.5 11l4.1-4.4.7.7L7 13 1.6 7.3l.7-.7L6.5 11V0h1v11zM13 15v-2h1v2c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1v-2h1v2h12z"></path></svg>\
+                                        </a>\
+                                        <button class="bx--btn bx--btn--primary bx--btn--field" onclick="downloadPDF('${file.split('.')[0] + '.txt'}')" type="button">\
+                                        Download as PDF\
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">\
+                                        <path d="M7.5 11l4.1-4.4.7.7L7 13 1.6 7.3l.7-.7L6.5 11V0h1v11zM13 15v-2h1v2c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1v-2h1v2h12z"></path></svg>\
+                                        </button>\
+                                        </div>\
+                                        <br>`;
 
 
+        scrollClass.innerHTML += "<div id='content'>";                                
         data.forEach(element => {
             if (element.speaker == undefined) {
 
             } else {
+                
                 startTimes.push(element.from);
                 endTimes.push(element.to);
                 speakersList.push(element.speaker);
@@ -308,53 +308,20 @@ async function SpeechToText(file) {
                                 <br>`;
                 scrollClass.innerHTML += addSpeaker;
                 arr.push(element.speaker);
-                // if (element.speaker == 0) {
-                //     addSpeaker = '<div class="bx--tile">\
-                //                     <h4 class="time-left"> Willie Tejada </h4>\
-                //                     <hr>\
-                //                     <div class="well darker">\
-                //                         <p>' + element.transcript + '</p>\
-                //                     </div>\
-                //                 </div>\
-                //                 <br>';
-                //     scrollClass.innerHTML += addSpeaker;
-                //     arr.push(element.speaker);
-                // } else if (element.speaker == 1) {
-                //     addSpeaker = '<div class="bx--tile">\
-                //                     <h4 class="time-left"> Randi Stipes </h4>\
-                //                     <hr>\
-                //                     <div class="well darker">\
-                //                         <p>' + element.transcript + '</p>\
-                //                     </div>\
-                //                 </div>\
-                //                 <br>';
-                //     scrollClass.innerHTML += addSpeaker;
-                //     arr.push(element.speaker);
-                // } else if (element.speaker == 2) {
-                //     addSpeaker = '<div class="bx--tile">\
-                //                     <h4 class="time-left"> Andrew </h4>\
-                //                     <hr>\
-                //                     <div class="well darker">\
-                //                         <p>' + element.transcript + '</p>\
-                //                     </div>\
-                //                 </div>\
-                //                 <br>';
-                //     scrollClass.innerHTML += addSpeaker;
-                //     arr.push(element.speaker);
-                // }
-
             }
         });
+        scrollClass.innerHTML += "</div>";                                
         uniqueSpeakers = [];
         uniqueSpeakers = arr.unique();
+        fileN = file.split('.')[0]
         NluAnalysis(file.split('.')[0] + '.txt');
     });
 }
 
-async function NluAnalysis(file) {
+const NluAnalysis = async (file) => {
     progressMsg.className = "w3-animate-opacity";
     progressMsg.innerHTML = "Performing NLU Analysis on " + file + " ...";
-    await fetch(`/analyseText`).then(async(respo) => {
+    await fetch(`/analyseText`).then(async (respo) => {
         response = await respo.json();
         Loading2.style.display = "none";
         tabsHere.style.display = "block";
@@ -365,7 +332,7 @@ async function NluAnalysis(file) {
         uploading2.style.display = "none";
         uploaded2.style.display = "block";
 
-        setTimeout(function() { progressIndicator.style.display = "none"; }, 5000);
+        setTimeout(function () { progressIndicator.style.display = "none"; }, 5000);
 
         NLUAnalysed.style.display = "block";
         if (response.category == undefined && response.concepts == undefined && response.entity == undefined) {
@@ -446,10 +413,32 @@ async function NluAnalysis(file) {
     });
 }
 
-function Test() {
+const downloadText = (filename) => {
+    location.replace(`static/transcripts/${filename}`);
+};
 
+const downloadPDF = (filename) => {
+    var doc = new jsPDF();
+    var specialElementHandlers = {
+        '#editor': (element, renderer) => {
+            return true;
+        }
+    };
 
+    doc.fromHTML($('#scrollClass').html(), 15, 15, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+    });
+    doc.save(`${filename.replace('.txt', '.pdf')}`);
+};
 
+const downloadNLU = () => {
+    var printContents = document.getElementById("NLUAnalysed").innerHTML;
+    var originalContents = document.body.innerHTML;
 
+    document.body.innerHTML = printContents;
 
-}
+    window.print();
+
+    document.body.innerHTML = originalContents;
+};

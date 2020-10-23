@@ -5,3 +5,4 @@ ibm-cos-sdk==2.6.0
 ibm-watson==4.1.0
 numpy>=1.16.0
 wordcloud==1.7.0
+moviepy==1.0.3

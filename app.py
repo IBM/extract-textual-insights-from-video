@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import os
 import json
 import pipes
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import requests
 import math
 import matplotlib.pyplot as plt
@@ -21,6 +21,7 @@ from operator import itemgetter
 from wordcloud import WordCloud, STOPWORDS
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.websocket import RecognizeCallback, AudioSource
+from moviepy.editor import VideoFileClip
 
 ''' Initialize Flask Variables '''
 
@@ -29,8 +30,6 @@ app = Flask(__name__)
 app.config["VIDEO_UPLOAD"] = "static/raw/"
 app.config["AUDIO_UPLOAD"] = "static/audios/"
 app.config["TRANSCRIPT_UPLOAD"] = "static/transcripts/"
-app.config["COS_TRANSCRIPT"] = "transcript/"
-app.config["COS_AUDIOS"] = "audios/"
 app.config["NOUNS_ADJECTIVES"] = "static/images/nouns_adjectives"
 app.config["VERBS"] = "static/images/verbs"
 
@@ -201,8 +200,8 @@ def uploader():
             f.save(os.path.join(
                 app.config["VIDEO_UPLOAD"], secure_filename(filename_converted)))
 
-        print(json.dumps(SttModel, indent=2))
-        print(json.dumps(NluOptions, indent=2))
+        # print(json.dumps(SttModel, indent=2))
+        # print(json.dumps(NluOptions, indent=2))
         myResponse = {"flag": 1}
 
     except Exception as e:
@@ -221,15 +220,21 @@ def videoToAudio():
         file, file_extension = os.path.splitext(filename_converted)
         file = pipes.quote(file)
         
-        cmd = 'rm -r static/audios/*'
-        os.system(cmd)
+        # cmd = 'rm -r static/audios/*'
+        # os.system(cmd)
         
-        video_to_wav = 'ffmpeg -i ' +app.config['VIDEO_UPLOAD']+ file + file_extension + \
-            ' -vn -f flac -ab 192000 -vn ' + \
-            app.config["AUDIO_UPLOAD"] + file + '.flac'
+        # video_to_wav = 'ffmpeg -i ' +app.config['VIDEO_UPLOAD']+ file + file_extension + \
+        #     ' -vn -f flac -ab 192000 -vn ' + \
+        #     app.config["AUDIO_UPLOAD"] + file + '.flac'
             
-        print(video_to_wav)
-        os.system(video_to_wav)
+        # print(video_to_wav)
+        # os.system(video_to_wav)
+
+        videofilepath = app.config['VIDEO_UPLOAD']+ file + file_extension
+        audiofilepath = app.config['AUDIO_UPLOAD'] + file + '.mp3'
+        video = VideoFileClip(videofilepath)
+        audio = video.audio
+        audio.write_audiofile(audiofilepath)
 
         myFlag = {"flag": 1}
     except OSError as err:
@@ -262,16 +267,16 @@ myRecognizeCallback = MyRecognizeCallback()
 def transcribeAudio():
     try:
         modelInfo = SttModel
-        fileName = modelInfo["file"].split('.')[0]+'.flac'
+        fileName = modelInfo["file"].split('.')[0]+'.mp3'
         filename_converted = fileName.replace(
             " ", "-").replace("'", "").lower()
         print("Processing ...\n")
         with open(app.config["AUDIO_UPLOAD"]+filename_converted, 'rb') as audio_file:
-            print(app.config["AUDIO_UPLOAD"]+filename_converted)
+            # print(app.config["AUDIO_UPLOAD"]+filename_converted)
             if liteVersion:
                 speech_recognition_results = speech_to_text.recognize(
                     audio=audio_file,
-                    content_type='audio/flac',
+                    content_type='audio/mp3',
                     recognize_callback=myRecognizeCallback,
                     model='en-US_BroadbandModel',
                     keywords=['redhat', 'data and AI', 'Linux', 'Kubernetes'],
@@ -283,7 +288,7 @@ def transcribeAudio():
             else:
                 speech_recognition_results = speech_to_text.recognize(
                     audio=audio_file,
-                    content_type='audio/flac',
+                    content_type='audio/mp3',
                     recognize_callback=myRecognizeCallback,
                     model='en-US_BroadbandModel',
                     keywords=['redhat', 'data and AI', 'Linux', 'Kubernetes'],
@@ -304,10 +309,10 @@ def transcribeAudio():
                         transcript = transcript + \
                             alternatives['transcript']
                         transcript += '\n'
-            print(transcript)
+            # print(transcript)
 
             with open(app.config["TRANSCRIPT_UPLOAD"]+filename_converted.split('.')[0]+'.txt', "w") as text_file:
-                text_file.write(transcript)
+                text_file.write(transcript.replace("%HESITATION", ""))
 
             speakerLabels = speech_recognition_results["speaker_labels"]
             print("Done Processing ...\n")
@@ -355,7 +360,7 @@ def analyseText():
         text = text_file.read()
         text = text.replace('%HESITATION', '')
 
-    print(text)
+    # print(text)
 
     ''' Initialize a return variable '''
 
@@ -464,7 +469,7 @@ def analyseText():
         ).get_result()
 
         sentences_with_joy = []
-        print(json.dumps(tone_analysis, indent=2))
+        # print(json.dumps(tone_analysis, indent=2))
 
         try:
             for tone in tone_analysis['sentences_tone']:
