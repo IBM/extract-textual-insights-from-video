@@ -6,3 +6,4 @@ ibm-watson==4.1.0
 numpy>=1.16.0
 wordcloud==1.7.0
 moviepy==1.0.3
+PyJWT==1.7.1
