@@ -1,7 +1,7 @@
 FLASK==1.1.1
-Flask-Cors==3.0.8 
-ibm-watson>=5.1.0
-numpy>=1.16.0
+Flask-Cors==3.0.9
+ibm-cloud-sdk-core==3.10.0
+ibm-watson==5.1.0
+numpy==1.18.5
 wordcloud==1.8.1
 moviepy==1.0.3
-PyJWT==1.7.1
