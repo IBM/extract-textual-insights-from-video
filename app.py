@@ -8,14 +8,12 @@ import math
 import matplotlib.pyplot as plt
 from datetime import datetime
 import time
-import ibm_boto3
-from ibm_botocore.client import Config, ClientError
 from ibm_watson import SpeechToTextV1
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_watson.natural_language_understanding_v1 \
     import Features, EntitiesOptions, KeywordsOptions, \
     SyntaxOptions, SyntaxOptionsTokens, CategoriesOptions, ConceptsOptions, \
-    EmotionOptions, MetadataOptions, RelationsOptions, SemanticRolesOptions
+    EmotionOptions, RelationsOptions, SemanticRolesOptions
 from ibm_watson import ToneAnalyzerV3
 from operator import itemgetter
 from wordcloud import WordCloud, STOPWORDS
