@@ -1,12 +1,12 @@
 <html>
     <style>
-        .button.is-dark.is-medium {
+        .button.is-dark.is-small {
             font-family: 'IBM Plex Sans', sans-serif;
             background-color: #1a1a1a;
             border-color: white;
             color: #fff;
         }
-        .button.is-dark.is-medium:hover {
+        .button.is-dark.is-small:hover {
             font-family: 'IBM Plex Sans', sans-serif;
             background-color: #2a67f5;
             border-color: white;
@@ -56,12 +56,12 @@ This is an Interactive instructions, follow the steps to setup a working instanc
 
 ### 1. Clone the GitHub repository
 
-<a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3%20install%20-r%20requirements.txt" >Get the Code Pattern on Playground</a>
+<a class="button is-dark is-small" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3%20install%20-r%20requirements.txt" >Get the Code Pattern on Playground</a>
 
 ### 2. Create and Configure IBM Watson Services
 You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.
 
-<a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
 
 Do not have an IBM Cloud Account? click [here](https://cloud.ibm.com/registration) to create one for free.
 
@@ -75,20 +75,21 @@ This code pattern uses the following IBM Watson Services:
 
 Create these services and configure the credentials in the code pattern with just a click of button.
 
-<a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
+<a class="button is-dark is-small" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
 
 ### 3. Build and Run the Application
 You can build and run the Application within the Developer Playground, click on **Build and Run** to start the application.
 
-<a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$python3%20app.py">Build and Run</a>
+<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$python3%20app.py">Build and Run</a>
 
 You can make use of any meeting video or classroom video that you have or you can download the [video](http://videos.bigdatauniversity.com/DV0101EN/Module_0_Welcome.mp4) that we have used for the demonstration purpose.
 
 ### 4. Clean up
 Completed the code pattern? Click on **Clean up** to delete the IBM Cloud services that were created.
 
-<a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
+<a class="button is-dark is-small" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-1$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
 
 You can also manage the created services in [IBM Cloud Dashboard](https://cloud.ibm.com/resources).
 
-Find the detailed steps in the [README](/extract-textual-insights-from-video/README.md) file.
+You can find the detailed steps in the [README](didact://?commandId=vscode.didact.openTutorial&file="extract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2FREADME.md") file.
+
