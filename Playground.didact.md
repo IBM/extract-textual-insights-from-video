@@ -86,6 +86,8 @@ You can build and run the Application within the Developer Playground, click on 
 
 You can make use of any meeting video or classroom video that you have or you can download the [video](http://videos.bigdatauniversity.com/DV0101EN/Module_0_Welcome.mp4) that we have used for the demonstration purpose.
 
+<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal%202">Stop Running Application</a>
+
 ### 4. Clean up
 Completed the code pattern? Click on **Clean up** to delete the IBM Cloud services that were created.
 
