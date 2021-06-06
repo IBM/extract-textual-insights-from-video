@@ -1,0 +1,9 @@
+version: '3'
+services:
+  extract-text-insights:
+    image: extract-text-insights:v1
+    build: .
+    command: bash -c "python3 app.py"
+    container_name: extract-text-insights
+    ports:
+      - "8080:8080"
