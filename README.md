@@ -137,16 +137,10 @@ Or if you have landed on this code pattern directly without completing the previ
 $ cd extract-textual-insights-from-video/
 ```
 
-- Build the **Dockerfile** as follows :
+- Build the **Dockerfile** using **docker-compose** as follows :
 
 ```bash
-$ docker image build -t extract-textual-insights-from-video .
-```
-
-- once the dockerfile is built run the dockerfile as follows :
-
-```bash
-$ docker run -p 8080:8080 extract-textual-insights-from-video
+docker-compose up -d
 ```
 
 - The Application will be available on <http://localhost:8080>
