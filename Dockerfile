@@ -1,17 +1,11 @@
-FROM ubuntu:16.04
+FROM python:3.8.5-slim
 
-LABEL maintainer="Manoj Jahgirdar <manoj.jahgirdar@in.ibm.com>"
+WORKDIR /app
 
-RUN apt-get update
-RUN apt-get --assume-yes install ffmpeg
-RUN apt-get install -y python3 python3-dev python3-pip
+ADD . /app
 
-COPY ./ ./app
-WORKDIR ./app
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-RUN python3 -m pip install pip --upgrade
-RUN python3 -m pip install wheel
+EXPOSE 8080
 
-RUN pip3 install -r requirements.txt
-
-CMD python3 app.py
+CMD ["python", "-u", "app.py"]
