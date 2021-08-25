@@ -54,12 +54,15 @@ NluOptions = None
 liteVersion = False
 
 ''' Methods for IBM Watson Speech-To-Text '''
+try:
+    with open('speechtotext.json', 'r') as credentialsFile:
+        credentials1 = json.loads(credentialsFile.read())
+        STT_API_KEY_ID = credentials1.get('apikey')
+        STT_URL = credentials1.get('url')
+except json.decoder.JSONDecodeError:
+    print("Speech to text credentials file is empty, please enter the credentials and try again.")
+    exit()
 
-with open('speechtotext.json', 'r') as credentialsFile:
-    credentials1 = json.loads(credentialsFile.read())
-
-STT_API_KEY_ID = credentials1.get('apikey')
-STT_URL = credentials1.get('url')
 STT_language_model = "Earnings call language model"
 STT_acoustic_model = "Earnings call acoustic model"
 
@@ -136,11 +139,14 @@ def initSTT():
 
 ''' Methods for IBM Watson Natural Language Understanding '''
 
-with open('naturallanguageunderstanding.json', 'r') as credentialsFile:
-    credentials1 = json.loads(credentialsFile.read())
-
-NLU_API_KEY_ID = credentials1.get('apikey')
-NLU_URL = credentials1.get('url')
+try:
+    with open('naturallanguageunderstanding.json', 'r') as credentialsFile:
+        credentials1 = json.loads(credentialsFile.read())
+        NLU_API_KEY_ID = credentials1.get('apikey')
+        NLU_URL = credentials1.get('url')
+except json.decoder.JSONDecodeError:
+    print("Natural Language Understanding credentials file is empty, please enter the credentials and try again.")
+    exit()
 
 nlu_authenticator = IAMAuthenticator(NLU_API_KEY_ID)
 natural_language_understanding = NaturalLanguageUnderstandingV1(
@@ -152,12 +158,15 @@ natural_language_understanding.set_service_url(NLU_URL)
 
 ''' Methods for IBM Watson Tone Analyser '''
 
-with open('toneanalyzer.json', 'r') as credentialsFile:
-    credentials2 = json.loads(credentialsFile.read())
-
-TONE_API_KEY_ID = credentials2.get('apikey')
-TONE_URL = credentials2.get('url')
-
+try:
+    with open('toneanalyzer.json', 'r') as credentialsFile:
+        credentials2 = json.loads(credentialsFile.read())
+        TONE_API_KEY_ID = credentials2.get('apikey')
+        TONE_URL = credentials2.get('url')
+except json.decoder.JSONDecodeError:
+    print("Tone Analyzer credentials file is empty, please enter the credentials and try again.")
+    exit()
+    
 tone_analyzer_authenticator = IAMAuthenticator(TONE_API_KEY_ID)
 
 tone_analyzer = ToneAnalyzerV3(
