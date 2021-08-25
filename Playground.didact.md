@@ -58,7 +58,7 @@ This is an Interactive instructions, follow the steps to setup a working instanc
 
 ### 1. Clone the GitHub repository
 
-<a class="button is-dark is-small" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get the Code Pattern on Playground</a>
+<a class="button is-dark is-small" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video" >Get the Code Pattern on Playground</a>
 
 ### 2. Create and Configure IBM Watson Services
 You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.
@@ -82,7 +82,7 @@ Create these services and configure the credentials in the code pattern with jus
 ### 3. Build and Run the Application
 You can build and run the Application within the Developer Playground, click on **Build and Run** to start the application.
 
-<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$python3.8%20app.py">Build and Run</a>
+<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$pip3.8%20install%20-r%20requirements.txt%20%26%26%20python3.8%20app.py">Build and Run</a>
 
 You can make use of any meeting video or classroom video that you have or you can download the [video](http://videos.bigdatauniversity.com/DV0101EN/Module_0_Welcome.mp4) that we have used for the demonstration purpose.
 
