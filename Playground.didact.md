@@ -63,7 +63,7 @@ This is an Interactive instructions, follow the steps to setup a working instanc
 ### 2. Create and Configure IBM Watson Services
 You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.
 
-<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20%24(ibmcloud%20resource%20groups%20%7C%20awk%20%27FNR%3D%3D3%20%7Bprint%7D%27%20%7C%20awk%20%27%7Bprint%20%243%7D%27)">Login to IBM Cloud</a>
 
 Do not have an IBM Cloud Account? click [here](https://cloud.ibm.com/registration) to create one for free.
 
