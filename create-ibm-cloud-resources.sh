@@ -10,7 +10,7 @@ if [ "$cpserviceexists" = "OK" ]; then
     url=$(cat $servicename.txt | awk '$1 == "url:" {print $2}')
     JSON_STRING='{"apikey":"'"$apikey"'","url":"'"$url"'"}'
     echo $JSON_STRING > speechtotext.json
-else
+elif [ "$cpserviceexists" = "FAILED" ]; then
     echo "(1/3) Creating Speech to text service"
     ibmcloud resource service-instance-create $servicename $service lite $region
     ibmcloud resource service-key-create "$servicename-creds" Manager --instance-name $servicename > "$servicename.txt"  2>&1
@@ -32,7 +32,7 @@ if [ "$cpserviceexists" = "OK" ]; then
     url=$(cat $servicename.txt | awk '$1 == "url:" {print $2}')
     JSON_STRING='{"apikey":"'"$apikey"'","url":"'"$url"'"}'
     echo $JSON_STRING > naturallanguageunderstanding.json
-else
+elif [ "$cpserviceexists" = "FAILED" ]; then
     echo "(2/3) Creating Natural Language Understanding service"
     ibmcloud resource service-instance-create $servicename $service lite $region
     ibmcloud resource service-key-create "$servicename-creds" Manager --instance-name $servicename > "$servicename.txt"  2>&1
@@ -54,7 +54,7 @@ if [ "$cpserviceexists" = "OK" ]; then
     url=$(cat $servicename.txt | awk '$1 == "url:" {print $2}')
     JSON_STRING='{"apikey":"'"$apikey"'","url":"'"$url"'"}'
     echo $JSON_STRING > toneanalyzer.json
-else
+elif [ "$cpserviceexists" = "FAILED" ]; then
     echo "(3/3) Creating Text Analysis service"
     ibmcloud resource service-instance-create $servicename $service lite $region
     ibmcloud resource service-key-create "$servicename-creds" Manager --instance-name $servicename > "$servicename.txt"  2>&1
