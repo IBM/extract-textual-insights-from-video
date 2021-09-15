@@ -21,6 +21,9 @@ else
 fi
 
 servicename="cp-nlu"
+service="natural-language-understanding"
+region="eu-gb"
+
 cpserviceexists=$(ibmcloud resource service-instance $servicename | awk 'FNR == 2 {print}')
 if [ "$cpserviceexists" = "OK" ]; then
     echo "(2/3) Natural language understanding service already exists in your IBM Cloud account, using the same resource"
@@ -40,6 +43,9 @@ else
 fi
 
 servicename="cp-ta"
+service="tone-analyzer"
+region="eu-gb"
+
 cpserviceexists=$(ibmcloud resource service-instance $servicename | awk 'FNR == 2 {print}')
 if [ "$cpserviceexists" = "OK" ]; then
     echo "(3/3) Text analytics service already exists in your IBM Cloud account, using the same resource"
