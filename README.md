@@ -1,4 +1,4 @@
-# Use speech to text, advanced NLP and tone analysis to extract insights from video files.
+# Extract insights from videos
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson](). Please complete the [Extract audio from video](https://github.com/IBM/convert-video-to-audio), [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) and [Use advanced NLP and tone analysis to extract meaningful insights](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) code patterns of the series before continuing further since all the code patterns are linked.
 
