@@ -1,3 +1,15 @@
 .DS_Store
 doc/.DS_Store
 doc/source/.DS_Store
+static/.DS_Store
+static/videos/*
+static/audios/*
+static/transcripts/*
+static/images/*
+cp-nlu.txt
+cp-stt.txt
+cp-ta.txt
+__pycache__
+naturallanguageunderstanding.json
+speechtotext.json
+toneanalyzer.json

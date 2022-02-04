@@ -1,0 +1,293 @@
+<div class="inside">
+    <h2>Extract Textual Insights from Video</h2>
+    <br>
+    <ul data-accordion class="bx--accordion">
+        <li data-accordion-item class="bx--accordion__item">
+            <button class="bx--accordion__heading" aria-expanded="true" aria-controls="pane1" id="section1">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+                </svg>
+                <div class="bx--accordion__title">
+                    <h4>Select video to process</h4>
+                </div>
+            </button>
+            <div id="pane1" class="bx--accordion__content">
+                <div class="bx--form-item">
+                    <div class="bx--select">
+                        <div class="bx--select-input__wrapper">
+                            <select id="select-video-input" class="bx--select-input">
+                                <optgroup class="bx--select-optgroup" label="Sample Video Analyze">
+                                    <option class="bx--select-option" value="sample-vdo" selected>
+                                        Sample Video
+                                    </option>
+                                </optgroup>
+                                <optgroup class="bx--select-optgroup" label="Upload and Analyze">
+                                    <option class="bx--select-option" value="upload-vdo">
+                                        Upload Video
+                                    </option>
+                                </optgroup>
+                            </select>
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--select__arrow" width="16" height="16"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="bx--form-item" id="uploadVideo" style="display: none">
+                    <strong class="bx--file--label">Upload Video</strong>
+                    <br>
+                    <br>
+                    <p class="bx--label-description">
+                        <strong>Note:</strong>
+                        <br>
+                        <strong>1. </strong>
+                        Video must be in MP4 or MOV format.
+                        <br>
+                        <strong>2. </strong>
+                        Video must be less than 500 MB in case of local use and less than 50 MB in case of IBM Developer
+                        Technology
+                        Sandbox use.
+                        <br>
+                        <strong>3. </strong>
+                        Video must be less than 40 minutes.
+                    </p>
+                    <div class="bx--file" data-file data-file-demo-state-manager>
+                        <label for="file-uploader" class="bx--file-browse-btn" role="button" tabindex="0">
+                            <div data-file-drop-container class="bx--file__drop-container">
+                                Click here to upload
+                                <input type="file" class="bx--file-input" id="file-uploader" data-file-uploader
+                                    name="video" accept="video/*" data-target="[data-file-container]" />
+                            </div>
+                        </label>
+                        <div data-file-container id="myFiles" name="myFiles" class="bx--file-container">
+                        </div>
+                    </div>
+                </div>
+                <div class="bx--text-center" id="sampleVideo" style="display: block">
+                    <p class="bx--label-description">
+                        The sample video is a free <a
+                            href="http://videos.bigdatauniversity.com/DV0101EN/Module_0_Welcome.mp4">educational
+                            video</a>
+                        taken from <a href="cognitiveclasses.ai">cognitiveclasses.ai</a>. The video is about
+                        introduction to
+                        a python course.
+                    </p>
+                </div>
+                <br>
+            </div>
+        </li>
+        <li data-accordion-item class="bx--accordion__item">
+            <button class="bx--accordion__heading" aria-expanded="true" aria-controls="pane2" id="section2">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+                </svg>
+                <div class="bx--accordion__title">
+                    <h4>Select Speech to Text Models</h4>
+                </div>
+            </button>
+            <div id="pane2" class="bx--accordion__content">
+                <p class="bx--label-description">Select Language Model</p>
+                <div class="bx--form-item" id="gotLangModel" style="display: none">
+                    <div class="bx--select">
+                        <div class="bx--select-input__wrapper">
+                            <select id="select-langModel" class="bx--select-input">
+
+                            </select>
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--select__arrow" width="16" height="16"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="getLangModel">
+                    <div class="bx--file__selected-file">
+                        <p class="bx--file-filename">Getting Language STT Model ...</p>
+                        <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                            <div class="bx--inline-loading__animation">
+                                <div data-inline-loading-spinner="" class="bx--loading bx--loading--small">
+                                    <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                                        <circle class="bx--loading__background" cx="0" cy="0" r="26.8125">
+                                        </circle>
+                                        <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125">
+                                        </circle>
+                                    </svg>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <p class="bx--label-description">Select Acoustic Model</p>
+                <div class="bx--form-item" id="gotAcoModel" style="display: none">
+                    <div class="bx--select">
+                        <div class="bx--select-input__wrapper">
+                            <select id="select-acoModel" class="bx--select-input">
+
+
+                            </select>
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--select__arrow" width="16" height="16"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="getAcoModel">
+                    <div class="bx--file__selected-file">
+                        <p class="bx--file-filename">Getting Acoustic STT Model ...</p>
+                        <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                            <div class="bx--inline-loading__animation">
+                                <div data-inline-loading-spinner="" class="bx--loading bx--loading--small">
+                                    <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                                        <circle class="bx--loading__background" cx="0" cy="0" r="26.8125">
+                                        </circle>
+                                        <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125">
+                                        </circle>
+                                    </svg>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </li>
+
+        <li data-accordion-item class="bx--accordion__item">
+            <button class="bx--accordion__heading" aria-expanded="true" aria-controls="pane3" id="section3">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+                </svg>
+                <div class="bx--accordion__title">
+                    <h4>Select NLU Features</h4>
+                </div>
+            </button>
+            <div id="pane3" class="bx--accordion__content">
+                <fieldset class="bx--fieldset">
+                    <legend class="bx--label">Extract the following from the text using Natural Language Understanding &
+                        Tone Analyzer: </legend>
+                    <!-- input + label -->
+                    <div class="bx--form-item bx--checkbox-wrapper">
+                        <input id="category" class="bx--checkbox" type="checkbox" value="True" name="category" checked>
+                        <label for="category" class="bx--checkbox-label">Category</label>
+                    </div>
+                    <!-- input + label -->
+                    <div class="bx--form-item bx--checkbox-wrapper">
+                        <input id="concepts" class="bx--checkbox" type="checkbox" value="True" name="concepts" checked>
+                        <label for="concepts" class="bx--checkbox-label">Concept Tags</label>
+                    </div>
+                    <!-- input + label -->
+                    <div class="bx--form-item bx--checkbox-wrapper">
+                        <input id="entity" class="bx--checkbox" type="checkbox" value="True" name="entity" checked>
+                        <label for="entity" class="bx--checkbox-label">Entity</label>
+                    </div>
+                    <!-- input + label -->
+                    <div class="bx--form-item bx--checkbox-wrapper">
+                        <input id="keywords" class="bx--checkbox" type="checkbox" value="True" name="sentiments" checked
+                            disabled>
+                        <label for="keywords" class="bx--checkbox-label">Keywords,
+                            Sentiments and Emotions</label>
+                    </div>
+                    <!-- input + label checked disabled -->
+                    <div class="bx--form-item bx--checkbox-wrapper">
+                        <input id="topfive" class="bx--checkbox" type="checkbox" value="True" name="positiveSentences"
+                            checked disabled>
+                        <label for="topfive" class="bx--checkbox-label">Top 5
+                            Positive Sentences</label>
+                    </div>
+
+                </fieldset>
+        </li>
+
+    </ul>
+    <br>
+    <div class="bx--form-item">
+        <button class="bx--btn bx--btn--primary" id="Upload" name="Upload" value="Upload" type="button">Submit
+            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32"
+                aria-hidden="true">
+                <path d="M5 6.6l1.2 1.1L11 3v13h2V3l4.8 4.7L19 6.6 12 0z">
+                </path>
+                <path d="M22 14v6H2v-6H0v10H24V14z"></path>
+            </svg>
+        </button>
+    </div>
+    <br>
+    <div id="uploaded" style="display: none">
+        <div class="bx--file__selected-file">
+            <p class="bx--file-filename">Video Uploaded</p>
+            <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--file-complete" width="16" height="16"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path
+                        d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7s7-3.1,7-7C15,4.1,11.9,1,8,1z M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z">
+                    </path>
+                    <path d="M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z" data-icon-path="inner-path" opacity="0">
+                    </path>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <br>
+    <div id="uploading" style="display: none">
+        <div class="bx--file__selected-file">
+            <p class="bx--file-filename">Uploading ...</p>
+            <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                <div class="bx--inline-loading__animation">
+                    <div data-inline-loading-spinner="" class="bx--loading bx--loading--small">
+                        <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                            <circle class="bx--loading__background" cx="0" cy="0" r="26.8125">
+                            </circle>
+                            <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125">
+                            </circle>
+                        </svg>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+    <br>
+    <div id="uploadfailed" style="display: none">
+        <div class="bx--file__selected-file bx--file__selected-file--invalid" data-invalid>
+            <p class="bx--file-filename">Error processing file</p>
+            <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--file--invalid" width="16" height="16"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path
+                        d="M8,1C4.2,1,1,4.2,1,8s3.2,7,7,7s7-3.1,7-7S11.9,1,8,1z M7.5,4h1v5h-1C7.5,9,7.5,4,7.5,4z M8,12.2 c-0.4,0-0.8-0.4-0.8-0.8s0.3-0.8,0.8-0.8c0.4,0,0.8,0.4,0.8,0.8S8.4,12.2,8,12.2z">
+                    </path>
+                    <path
+                        d="M7.5,4h1v5h-1C7.5,9,7.5,4,7.5,4z M8,12.2c-0.4,0-0.8-0.4-0.8-0.8s0.3-0.8,0.8-0.8 c0.4,0,0.8,0.4,0.8,0.8S8.4,12.2,8,12.2z"
+                        data-icon-path="inner-path" opacity="0"></path>
+                </svg>
+            </span>
+            <div class="bx--form-requirement">
+                <div class="bx--form-requirement__title">Either no File is selected or File size exceeds limit.</div>
+            </div>
+        </div>
+    </div>
+
+    <video id="videoHere" width="100%" controls style="display:none">
+
+    </video>
+
+    <br>
+    <br>
+
+
+    <script src="../static/javascript/elements/form.js"></script>
+</div>
