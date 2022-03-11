@@ -5,3 +5,5 @@ ibm-watson==5.1.0
 numpy==1.18.5
 wordcloud==1.8.1
 moviepy==1.0.3
+itsdangerous==2.0.1
+Flask-RESTful==0.3.8
