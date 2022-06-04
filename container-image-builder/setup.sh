@@ -9,5 +9,5 @@ echo $i > ./dind.txt
 Ver_Num=`cat ./dind.txt`
 
 kubectl apply -f pod.yaml
-
+sleep 10
 kubectl port-forward dind 2375:2375
