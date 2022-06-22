@@ -2,7 +2,7 @@ Flask==2.1.0
 Flask-Cors==3.0.9
 ibm-cloud-sdk-core==3.10.0
 ibm-watson==5.1.0
-numpy==1.18.5
+numpy==1.22.0
 wordcloud==1.8.1
 moviepy==1.0.3
 itsdangerous==2.0.1
