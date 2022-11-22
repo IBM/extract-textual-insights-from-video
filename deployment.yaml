@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: video-insights-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: video-insights-deployment
+  template:
+    metadata:
+      labels:
+        app: video-insights-deployment
+    spec:
+      containers:
+        - name: video-insights-deployment
+          image: IMAGE_NAME
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: video-insights-deployment
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: video-insights-deployment
